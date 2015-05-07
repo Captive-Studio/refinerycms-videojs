@@ -1,35 +1,35 @@
 fr:
   wym_tools:
-    add_video: Ajouter une Vidéo 
+    add_video: Ajouter un embed
   refinery:
     admin:
       dashboard:
         additional_dashboard_menu_items:
-          create_new: Ajouter une Vidéo
+          create_new: Ajouter un embed
     plugins:
       videos:
-        title: Vidéos
+        title: Embeds
     videos:
       admin:
         videos:
           actions:
-            create_new: Ajouter une Vidéo
-            reorder: Réordonner les Vidéos
+            create_new: Ajouter un embed
+            reorder: Réordonner les Embeds
             reorder_done: Terminer
           records:
-            title: Vidéos
+            title: Embeds
             sorry_no_results: Désolé! Il y a pas de résultat à votre recherche
-            no_items_yet: Il y a pas de vidéo pour le moment. Click "Ajouter une Vidé" afin d'ajouter la premiere vidéo,
+            no_items_yet: Il y a pas d'embed pour le moment. Click "Ajouter un embed" afin d'ajouter le premier embed,
           video:
-            view_live_html: Voir cette vidéo live <br/><em>(ouvre une fenêtre)</em>
-            edit: Modifier vidéo
-            delete: Supprimer définitivement la vidéo 
+            view_live_html: Voir cet embed live <br/><em>(ouvre une fenêtre)</em>
+            edit: Modifier embed
+            delete: Supprimer définitivement l'embed 
             file: Fichier
             link: LIen
             shared_source: Embedded
           new:
             use_files: Utiliser un fichier
-            use_embedded_video: Utiliser un embedded vidéo
+            use_embedded_video: Utiliser un embed
           form:
             title: Titre
             poster: Poster
@@ -44,7 +44,7 @@ fr:
             add_source: Ajouter source
             delete_source: Supprimer source
             link_to_source: Lien vers la source
-            download_current: Utiliser la vidéo courante
+            download_current: Utiliser l'embed courante
             or: ou
             replace: remplace avec celà
             maximum_file_size: "Taille Max.: %{bytes}"
@@ -60,8 +60,8 @@ fr:
             options: Options
             autoplay: Lecture automatique
             show_ontrols: Affichage de la bar de controle
-            preload_video: Précharge la vidéo
-            loop_video: Vidéo en boucle
+            preload_video: Précharge l'embed
+            loop_video: Embed en boucle
           insert:
             insert: Insérer
           preview_form:
@@ -69,7 +69,7 @@ fr:
             height: Hauteur
       vidéos:
         show:
-          other: Autres Vidéos
+          other: Autres Embeds
   activerecord:
     attributes:
       'refinery/videos/video':
