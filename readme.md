@@ -1,14 +1,14 @@
-# Refinery CMS Video.js
-Simple video extension for [Refinery CMS](http://refinerycms.com).
-It adds a 'Videos' tab to admin menu where you can manage videos.
-And adds an 'add video' link to WYMeditor on 'Pages'.
+# Refinery CMS Embed
+Simple embed extension for [Refinery CMS](http://refinerycms.com).
+It adds a 'Embeds' tab to admin menu where you can manage embeds.
+And adds an 'add embed' link to WYMeditor on 'Pages'.
 
-There are three ways to include videos in your project.
+There are three ways to include embeds in your project.
 - You can embedded video (like youtube or vimeo iframes)
 - You can upload files
 - You can use link to external source
 
-Video (instance of `Refinery::Videos::Video` model) aggregates different sources (files and links, one or many).
+Embed (instance of `Refinery::Videos::Video` model) aggregates different sources (files and links, one or many).
 
 The instance method `Video#to_html` renders an html video tag like:
 
@@ -31,10 +31,8 @@ This content can be added to a page in WYMeditor, or everywhere in your view lik
 ```
 
 This extension: 
-  * Uses the [Video.js](http:videojs.com) player to playback video (except embedded video, of course).
   * Allows you to manage playback configuration (poster image, width, height, autoplay, controls, etc).
-  * Allows you to insert video to pages using WYMeditor, by inserting an HTML code with video (or iframe) tag.
-  * Automatically downloads the video.js library on your website frontend.
+  * Allows you to insert embed to pages using WYMeditor, by inserting an HTML code with iframe tag.
 
 ## Requirements
 Refinery CMS version 2.0.1 or above
@@ -42,12 +40,9 @@ Refinery CMS version 2.0.1 or above
 ## Install
 Open up your ``Gemfile`` and add at the bottom this line:
 
-```ruby
-gem 'refinerycms-videojs'
-```
 Get the latest version with:
 ```ruby
-gem 'refinerycms-videojs', git: 'git@github.com:adexin-team/refinerycms-videojs.git'
+gem 'refinerycms-embed', git: 'git@github.com:Captive-Studio/refinerycms-embed.git'
 ```
 
 Now, run: 
@@ -66,4 +61,4 @@ And you're done.
 
 ## More Information
 - Check out Refinery CMS [guides](http://refinerycms.com/guides)
-- Check out our [website](http://adexin.com)
+- Check out our [website](http://captive.fr)
