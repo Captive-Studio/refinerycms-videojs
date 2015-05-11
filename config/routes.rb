@@ -9,7 +9,7 @@ Refinery::Core::Engine.routes.append do
   # Admin routes
   namespace :videos, :path => '' do
     namespace :admin, :path => 'refinery' do
-      resources :videos do
+      resources :videos, path: 'embeds' do
         post :append_to_wym
         collection do
           post :update_positions
