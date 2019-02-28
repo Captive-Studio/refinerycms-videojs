@@ -1,4 +1,4 @@
-Refinery::Core::Engine.routes.append do
+Refinery::Core::Engine.routes.draw do
   get '/system/videos/*dragonfly' => Dragonfly[:refinery_videos]
 
   # Frontend routes
@@ -8,7 +8,7 @@ Refinery::Core::Engine.routes.append do
 
   # Admin routes
   namespace :videos, :path => '' do
-    namespace :admin, :path => 'refinery' do
+    namespace :admin, :path => Refinery::Core.backend_route do
       resources :videos, path: 'embeds' do
         post :append_to_wym
         collection do
