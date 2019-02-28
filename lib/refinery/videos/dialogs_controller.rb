@@ -7,5 +7,8 @@ Refinery::Admin::DialogsController.class_eval do
       find_iframe_src_without_video
     end
   end
-  alias_method_chain :find_iframe_src, :video
+
+  def video
+    find_iframe_src_with_video
+  end
 end
