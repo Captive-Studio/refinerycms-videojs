@@ -1,4 +1,5 @@
 # Refinery CMS Embed
+
 Simple embed extension for [Refinery CMS](http://refinerycms.com).
 It adds a 'Embeds' tab to admin menu where you can manage embeds.
 And adds an 'add embed' link to WYMeditor on 'Pages'.
@@ -35,9 +36,11 @@ This extension:
   * Allows you to insert embed to pages using WYMeditor, by inserting an HTML code with iframe tag.
 
 ## Requirements
-Refinery CMS version 2.0.1 or above
+
+Refinery CMS 4.x
 
 ## Install
+
 Open up your ``Gemfile`` and add at the bottom this line:
 
 Get the latest version with:
@@ -60,5 +63,6 @@ Run database migrations:
 And you're done.
 
 ## More Information
+
 - Check out Refinery CMS [guides](http://refinerycms.com/guides)
 - Check out our [website](http://captive.fr)
