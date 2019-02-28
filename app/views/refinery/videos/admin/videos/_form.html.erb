@@ -7,7 +7,7 @@
 
     <div class='field'>
       <%= f.label t('.title') %>
-      <%= f.text_field :title, :required => true  %>
+      <%= f.text_field :title, required: true, class: 'larger widest'  %>
     </div>
 
     <% if @embedded %>
@@ -36,9 +36,9 @@
 
     <%= render('form_option_fields', :f => f) unless @embedded %>
 
-    <%= render '/refinery/admin/form_actions',
-               :f                   => f,
-               :continue_editing    => false,
-               :delete_title        => t('delete', :scope => 'refinery.videos.admin.videos.video'),
-               :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @video.title) %>
+    <%= render '/refinery/admin/form_actions', f: f,
+               continue_editing: false,
+               delete_title: t('delete', scope: 'refinery.videos.admin.videos.video'),
+               delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @video.title),
+               cancel_url: refinery.videos_admin_videos_path -%>
 <% end %>

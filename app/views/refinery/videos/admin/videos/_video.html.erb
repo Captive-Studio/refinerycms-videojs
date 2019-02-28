@@ -1,3 +1,4 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(service) -%>">
 <li style="min-height: 35px" class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(video) -%>">
   <span class='title'>
     <%= video.title %>
@@ -6,18 +7,14 @@
        <%= "#{t(info[0])}: #{info[1]}" %>
     <% end %>)</span>
   </span>
+
   <% unless action_name =~ /insert/   %>
   <span class='actions'>
-    <%= link_to refinery_icon_tag('eye.png'), refinery.videos_admin_video_path(video, :dialog => true),
-                :title => t('.view_live_html'),
-                :target => "_blank" %>
-    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_videos_admin_video_path(video),
-                :title => t('.edit') %>
-    <%= link_to refinery_icon_tag("delete.png"), refinery.videos_admin_video_path(video),
-                :class => "cancel confirm-delete",
-                :title => t('.delete'),
-                :confirm => t('message', :scope => 'refinery.admin.delete', :title => video.title),
-                :method => :delete %>
+    <%= action_icon(:preview, refinery.videos_admin_video_path(video, dialog: true), t('.view_live_html')) %>
+    <%= action_icon(:edit,    refinery.edit_videos_admin_video_path(service), t('.edit') ) %>
+    <%= action_icon(:delete,  refinery.videos_admin_video_path(service), t('.delete'),
+      { class: "cancel confirm-delete",
+        data: {confirm: t('message',  scope: 'refinery.admin.delete', title: video.title)}}  ) %>
   </span>
   <% end %>
 </li>
