@@ -1,8 +1,8 @@
 <div class='field'>
   <%= f.label t('.copy_embed_tag_here') %>
-  <%= f.text_area :embed_tag, :class => 'embed_tag', :required => true %>
+  <%= f.text_area :embed_tag, class: 'embed_tag widest', required: true %>
 </div>
-<%= f.hidden_field :use_shared, :value => true %>
+<%= f.hidden_field :use_shared, value: true %>
 
 <script type="text/javascript">
   $(function(){
