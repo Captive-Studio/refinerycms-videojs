@@ -6,12 +6,12 @@ module Refinery
 
       engine_name :refinery_videos
 
-      initializer 'attach-refinery-videos-with-dragonfly', :after => :load_config_initializers do |app|
-        ::Refinery::Videos::Dragonfly.configure!
-        ::Refinery::Videos::Dragonfly.attach!(app)
-      end
+      # initializer 'attach-refinery-videos-with-dragonfly', :after => :load_config_initializers do |app|
+      #   # ::Refinery::Videos::Dragonfly.configure!
+      #   ::Refinery::Videos::Dragonfly.attach!(app)
+      # end
 
-      initializer "register refinerycms_videos plugin" do
+      before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.name = "videos"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.videos_admin_videos_path }

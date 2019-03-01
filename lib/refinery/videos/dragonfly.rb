@@ -14,16 +14,11 @@ module Refinery
           app_videos.content_disposition = :attachment
         end
 
-        def configure!
-          app_videos = ::Dragonfly.app(:refinery_videos)
-          app_videos.configure_with(:rails) do |c|
-            #c.datastore = ::Dragonfly::DataStorage::MongoDataStore.new(:db => MongoMapper.database)
-            c.datastore.root_path = Refinery::Videos.datastore_root_path
-            c.url_format = Refinery::Videos.dragonfly_url_format
-            c.secret = Refinery::Videos.dragonfly_secret
-          end
-
-          if ::Refinery::Videos.s3_backend
+        app_videos = ::Dragonfly.app(:refinery_images)
+        app_videos.configure do
+          if app_videos.datastore.is_a? ::Dragonfly::FileDataStore
+            app_videos.datastore.server_root = 'public'
+          else
             app_videos.datastore = ::Dragonfly::DataStorage::S3DataStore.new
             app_videos.datastore.configure do |s3|
               s3.bucket_name = Refinery::Videos.s3_bucket_name
@@ -34,6 +29,30 @@ module Refinery
             end
           end
         end
+        # def configure!
+
+        #   app_videos = ::Dragonfly.app(:refinery_videos)
+        #   # app_videos.configure_with(:rails) do |c|
+        #   #   #c.datastore = ::Dragonfly::DataStorage::MongoDataStore.new(:db => MongoMapper.database)
+        #   #   c.datastore.root_path = Refinery::Videos.datastore_root_path
+        #   #   c.url_format = Refinery::Videos.dragonfly_url_format
+        #   #   c.secret = Refinery::Videos.dragonfly_secret
+        #   # end
+
+        #   # if ::Refinery::Videos.s3_backend
+        #   if app_videos.datastore.is_a? ::Dragonfly::FileDataStore
+        #     app_videos.datastore.server_root = 'public'
+        #   else
+        #     app_videos.datastore = ::Dragonfly::DataStorage::S3DataStore.new
+        #     app_videos.datastore.configure do |s3|
+        #       s3.bucket_name = Refinery::Videos.s3_bucket_name
+        #       s3.access_key_id = Refinery::Videos.s3_access_key_id
+        #       s3.secret_access_key = Refinery::Videos.s3_secret_access_key
+        #       # S3 Region otherwise defaults to 'us-east-1'
+        #       s3.region = Refinery::Videos.s3_region if Refinery::Videos.s3_region
+        #     end
+        #   end
+        # end
 
         def attach!(app)
           if defined?(::Rack::Cache)
