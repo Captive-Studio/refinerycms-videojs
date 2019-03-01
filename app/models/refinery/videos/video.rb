@@ -5,15 +5,15 @@ module Refinery
     class Video < Refinery::Core::BaseModel
 
       self.table_name = 'refinery_videos'
-      acts_as_indexed :fields => [:title]
+      acts_as_indexed fields: [:title]
 
       validates :title, :presence => true
       validate :one_source
 
-      has_many :video_files, :dependent => :destroy
+      has_many :video_files, dependent: :destroy, class_name: '::Refinery::Videos::VideoFile'
       accepts_nested_attributes_for :video_files
 
-      belongs_to :poster, :class_name => '::Refinery::Image'
+      belongs_to :poster, class_name: '::Refinery::Image'
       accepts_nested_attributes_for :poster
 
       ################## Video config options
@@ -22,10 +22,6 @@ module Refinery
           :autoplay => "false", :width => "300", :height => "200",
           :controls => "true", :preload => "false", :loop => "false"
       }
-
-      attr_accessible :title, :poster_id, :video_files_attributes,
-                      :position, :config, :embed_tag, :use_shared,
-                      *CONFIG_OPTIONS.keys
 
       # Create getters and setters
       CONFIG_OPTIONS.keys.each do |option|

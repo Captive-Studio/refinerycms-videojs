@@ -8,6 +8,8 @@
     <% end %>)</span>
   </span>
 
+  <span class='preview'></span>
+
   <% unless action_name =~ /insert/   %>
   <span class='actions'>
     <%= action_icon(:preview, refinery.videos_admin_video_path(video, dialog: true), t('.view_live_html')) %>

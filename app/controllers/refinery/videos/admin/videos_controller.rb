@@ -56,6 +56,10 @@ module Refinery
           @embedded = true if params['embedded']
         end
 
+        def video_params
+          params.require(:video).permit(:title, :poster_id, :video_files_attributes,
+                                        :position, :config, :embed_tag, :use_shared)
+        end
       end
     end
   end

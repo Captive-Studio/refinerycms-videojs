@@ -6,7 +6,6 @@ module Refinery
 
       self.table_name = 'refinery_video_files'
       acts_as_indexed :fields => [:file_name, :file_ext]
-      attr_accessible :file, :file_mime_type, :position, :use_external, :external_url
       belongs_to :video
 
       MIME_TYPES = {'.mp4' => 'mp4', '.flv' => 'flv', '.webm' => 'webm', '.ogg' => 'ogg', '.ogv' => 'ogg'}
