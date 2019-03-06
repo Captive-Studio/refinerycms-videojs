@@ -11,8 +11,7 @@ module Refinery
       MIME_TYPES = {'.mp4' => 'mp4', '.flv' => 'flv', '.webm' => 'webm', '.ogg' => 'ogg', '.ogv' => 'ogg'}
 
       ############################ Dragonfly
-      ::Refinery::Videos::Dragonfly.setup!
-      video_accessor :file
+      dragonfly_accessor :file
 
       delegate :ext, :size, :mime_type, :url,
                :to        => :file,

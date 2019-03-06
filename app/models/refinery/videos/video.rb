@@ -13,7 +13,7 @@ module Refinery
       has_many :video_files, dependent: :destroy, class_name: '::Refinery::Videos::VideoFile'
       accepts_nested_attributes_for :video_files
 
-      belongs_to :poster, class_name: '::Refinery::Image'
+      belongs_to :poster, class_name: '::Refinery::Image', optional: true
       accepts_nested_attributes_for :poster
 
       ################## Video config options

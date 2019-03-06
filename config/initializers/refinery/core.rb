@@ -9,3 +9,5 @@ Refinery::Core.configure do |config|
   #Register extra stylesheet for backend (optional options)
   config.register_stylesheet "refinery/admin/video.css"
 end
+
+Rails.application.config.assets.precompile += %w( refinery/admin/video.css refinery/admin/wymeditor_monkeypatch.js )

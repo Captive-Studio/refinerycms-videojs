@@ -57,8 +57,11 @@ module Refinery
         end
 
         def video_params
-          params.require(:video).permit(:title, :poster_id, :video_files_attributes,
-                                        :position, :config, :embed_tag, :use_shared)
+          params.require(:video).permit(:title, :poster_id,
+                                        :position, :config, :embed_tag, :use_shared,
+                                        :width, :height, :autoplay, :controls, :preload, :loop,
+                                        video_files_attributes: {})
+                                
         end
       end
     end

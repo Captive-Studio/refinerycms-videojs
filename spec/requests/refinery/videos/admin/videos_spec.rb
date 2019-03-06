@@ -1,19 +1,13 @@
 # encoding: utf-8
 require "spec_helper"
-Capybara.javascript_driver = :webkit
-module Refinery
-  module Videos
-    describe 'Admin' do
-      describe 'videos' do
+Capybara.javascript_driver = :poltergeist
 
-        before do
-          visit refinery.new_refinery_user_session_path
-          fill_in "Username", :with => 'admin@admin.com'
-          fill_in "Email", :with => 'admin@admin.com'
-          fill_in "Password", :with => 'admin@admin.com'
-          fill_in "Password confirmation", :with => 'admin@admin.com'
-          click_button "Sign up"
-        end
+
+describe Refinery do
+  describe 'Videos' do
+    describe 'Admin' do
+      describe 'videos', type: :feature do
+        refinery_login
 
         describe 'videos list' do
           before(:each) do
@@ -58,10 +52,12 @@ module Refinery
           end
 
           context "valid data for file with file" do
+            let(:video_path) { Refinery.roots('refinery/videos').join('spec/support/fixtures/video.flv') }
+
             it "should succeed" do
               fill_in "video_title", :with => "Test Video"
               file = File.join(Rails.root, 'spec/support/fixtures/video.flv')
-              attach_file('video_video_files_attributes_0_file', file)
+              attach_file('video_video_files_attributes_0_file', video_path)
               click_button "Save"
               page.should have_content("'Test Video' was successfully added.")
               Refinery::Videos::Video.count.should == 1
@@ -101,12 +97,12 @@ module Refinery
             FactoryBot.create(:valid_video, :title => "Test Video1", :embed_tag => 'external_video1')
             FactoryBot.create(:valid_video, :title => "Test Video2", :embed_tag => 'external_video2')
           end
+
           it "should show list of available video" do
             visit refinery.insert_videos_admin_videos_path
             page.should have_content("Test Video1")
             page.should have_content("Test Video2")
           end
-
         end
 
       end

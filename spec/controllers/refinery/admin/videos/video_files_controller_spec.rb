@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Refinery::Videos::Admin::VideoFilesController do
+describe Refinery::Videos::Admin::VideoFilesController, :type => :controller  do
   render_views
   before do
     @user = Refinery::User.create!(:username => 'admin@admin.com',

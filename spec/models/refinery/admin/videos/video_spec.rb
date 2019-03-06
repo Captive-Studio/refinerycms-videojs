@@ -5,7 +5,7 @@ module Refinery
     describe Video do
 
       describe 'validate file presence' do
-        subject { FactoryGirl.build(:video) }
+        subject { FactoryBot.build(:video) }
         before { subject.valid? }
 
         it { should be_invalid }
@@ -13,7 +13,7 @@ module Refinery
       end
 
       describe 'validate embed_tag presence' do
-        subject { FactoryGirl.build(:video, :use_shared => true) }
+        subject { FactoryBot.build(:video, :use_shared => true) }
         before { subject.valid? }
 
         it { should be_invalid }
@@ -21,13 +21,13 @@ module Refinery
       end
 
       describe 'should be valid' do
-        subject { FactoryGirl.build(:valid_video) }
+        subject { FactoryBot.build(:valid_video) }
         it { should be_valid }
       end
 
       describe 'should be valid again' do
-        let(:video_file) { FactoryGirl.build(:video_file) }
-        let(:video) { FactoryGirl.build(:video, :use_shared => false) }
+        let(:video_file) { FactoryBot.build(:video_file) }
+        let(:video) { FactoryBot.build(:video, :use_shared => false) }
         before {video.video_files << video_file}
         it 'should be valid video' do
           video.should be_valid
@@ -35,7 +35,7 @@ module Refinery
       end
 
       describe 'config' do
-        let(:video) { FactoryGirl.build(:valid_video) }
+        let(:video) { FactoryBot.build(:valid_video) }
 
         context 'get option' do
           before { video.config = { :height => 100 } }
@@ -72,7 +72,7 @@ module Refinery
 
       describe 'video to_html method' do
         context 'with file' do
-          let(:video_file) { FactoryGirl.build(:video_file) }
+          let(:video_file) { FactoryBot.build(:video_file) }
           let(:video) { Video.new(:use_shared => false) }
           before do
             video_file.stub(:url).and_return('url_to_video_file')
@@ -87,7 +87,7 @@ module Refinery
 
         context 'with embedded video' do
           let(:video) do
-            FactoryGirl.create(:valid_video,
+            FactoryBot.create(:valid_video,
                                :embed_tag => "<iframe width=\"560\" height=\"315\" src=\"http://www.youtube.com/embed/L5J8cIQHlnY\" frameborder=\"0\" allowfullscreen></iframe>")
           end
 
@@ -109,8 +109,8 @@ module Refinery
       end
 
       describe 'short_info' do
-        let(:video) { FactoryGirl.build(:valid_video) }
-        let(:video_file) { FactoryGirl.build(:video_file, :use_external => false) }
+        let(:video) { FactoryBot.build(:valid_video) }
+        let(:video_file) { FactoryBot.build(:video_file, :use_external => false) }
         it 'should return short info' do
           video.short_info.to_s.should match(/.shared_source/i)
           video.use_shared = false

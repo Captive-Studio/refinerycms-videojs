@@ -100,3 +100,4 @@ vendor/extensions/**/spec/dummy
 extensions/**/Gemfile.lock
 
 spec/dummy
+dragonfly/**/*
