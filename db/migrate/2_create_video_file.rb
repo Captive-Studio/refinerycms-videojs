@@ -1,4 +1,4 @@
-class CreateVideoFile < ActiveRecord::Migration
+class CreateVideoFile < ActiveRecord::Migration[4.2]
 
   def up
     create_table "refinery_video_files", :force => true do |t|

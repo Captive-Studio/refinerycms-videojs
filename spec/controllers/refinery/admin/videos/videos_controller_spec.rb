@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Refinery::Videos::Admin::VideosController do
+describe Refinery::Videos::Admin::VideosController, type: :controller do
   render_views
 
   before do

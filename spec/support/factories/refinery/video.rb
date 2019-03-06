@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :video, :class => Refinery::Videos::Video do
     sequence(:title) { |n| "video_#{n}" }
     position { nil }
@@ -9,7 +9,7 @@ FactoryGirl.define do
 end
 
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :valid_video, :class => Refinery::Videos::Video do
     sequence(:title) { |n| "video_#{n}" }
     position { nil }

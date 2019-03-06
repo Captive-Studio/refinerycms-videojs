@@ -16,4 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'dragonfly'
   s.add_dependency 'rack-cache'
   s.add_dependency 'refinerycms-core',    '~> 4.0.0'
+
+  # Development dependencies (usually used for testing)
+  s.add_development_dependency 'refinerycms-testing', '~> 4.0.0'
 end

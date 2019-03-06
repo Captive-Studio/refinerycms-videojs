@@ -17,8 +17,8 @@ module Refinery
 
         describe 'videos list' do
           before(:each) do
-            FactoryGirl.create(:valid_video, :title => 'UniqueTitleOne')
-            FactoryGirl.create(:valid_video, :title => 'UniqueTitleTwo')
+            FactoryBot.create(:valid_video, :title => 'UniqueTitleOne')
+            FactoryBot.create(:valid_video, :title => 'UniqueTitleTwo')
           end
 
           it "shows two items" do
@@ -71,7 +71,7 @@ module Refinery
         end
 
         describe "edit" do
-          before(:each) { FactoryGirl.create(:valid_video, :title => "Test Video") }
+          before(:each) { FactoryBot.create(:valid_video, :title => "Test Video") }
 
           it "should succeed" do
             visit refinery.videos_admin_videos_path
@@ -87,7 +87,7 @@ module Refinery
         end
 
         describe "destroy" do
-          before(:each) { FactoryGirl.create(:valid_video, :title => "UniqueTitleOne") }
+          before(:each) { FactoryBot.create(:valid_video, :title => "UniqueTitleOne") }
           it "should succeed" do
             visit refinery.videos_admin_videos_path
             click_link "Remove this video forever"
@@ -98,8 +98,8 @@ module Refinery
 
         describe "insert video" do
           before(:each) do
-            FactoryGirl.create(:valid_video, :title => "Test Video1", :embed_tag => 'external_video1')
-            FactoryGirl.create(:valid_video, :title => "Test Video2", :embed_tag => 'external_video2')
+            FactoryBot.create(:valid_video, :title => "Test Video1", :embed_tag => 'external_video1')
+            FactoryBot.create(:valid_video, :title => "Test Video2", :embed_tag => 'external_video2')
           end
           it "should show list of available video" do
             visit refinery.insert_videos_admin_videos_path

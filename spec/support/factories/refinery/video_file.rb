@@ -1,5 +1,4 @@
-
-FactoryGirl.define do
+FactoryBot.define do
   factory :video_file, :class => Refinery::Videos::VideoFile do
     sequence(:file_name) { |n| "refinery_#{n}.flv" }
     file_size { 4793465 }
